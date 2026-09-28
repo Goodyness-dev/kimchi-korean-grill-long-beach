@@ -32,7 +32,7 @@ export default function StaffLogin({ onLoginSuccess, onCancel }) {
       <div className="card-thick bg-neutral-950 w-full max-w-md p-6 sm:p-8 space-y-6 border-2 border-neutral-800 shadow-2xl">
         <div className="text-center space-y-2">
           <div className="w-12 h-12 rounded-2xl bg-orange-950 border border-orange-800 text-orange-400 flex items-center justify-center mx-auto text-xl font-bold shadow-lg shadow-orange-900/40">
-            ðŸ‘¨â€ðŸ³
+            K
           </div>
           <h3 className="font-serif text-2xl font-bold text-white">Staff Kitchen Portal</h3>
           <p className="text-xs text-neutral-400">Authenticate to manage incoming orders &amp; kitchen flow</p>

@@ -71,7 +71,7 @@ export default function CartDrawer({
           <div className="p-5 border-b border-neutral-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-orange-950/80 border border-orange-800 text-orange-400 flex items-center justify-center font-bold">
-                Ã°Å¸â€ºâ€™
+                ◇
               </div>
               <div>
                 <h3 className="font-serif text-lg font-bold text-white">Your Pickup Cart</h3>
@@ -79,7 +79,7 @@ export default function CartDrawer({
               </div>
             </div>
             <button
-              onClick={onClose}
+              aria-label="Close" onClick={onClose}
               className="p-1 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-900 transition"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,7 +92,7 @@ export default function CartDrawer({
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {cartItems.length === 0 ? (
               <div className="text-center py-16 space-y-3">
-                <div className="text-4xl">Ã°Å¸Ââ€¢</div>
+                <div className="text-4xl" aria-hidden="true">◇</div>
                 <h4 className="font-serif text-base font-bold text-neutral-300">Your basket is empty</h4>
                 <p className="text-xs text-neutral-500 max-w-xs mx-auto">
                   Add fresh wood-fired Prime Bulgogi, spicy pork, crispy chicken, or dolsot bibimbap from our menu.
@@ -192,7 +192,7 @@ export default function CartDrawer({
               </div>
 
               <div className="text-[11px] text-neutral-400 bg-neutral-950 p-2.5 rounded-xl border border-neutral-800 flex items-center gap-2">
-                <span className="text-emerald-400 text-sm">Ã¢Å“â€œ</span>
+                <span className="text-emerald-400 text-sm">✓</span>
                 <span>Pay in person at pickup counter. No card payment online.</span>
               </div>
 

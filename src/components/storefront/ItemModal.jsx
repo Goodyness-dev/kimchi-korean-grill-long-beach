@@ -92,7 +92,7 @@ export default function ItemModal({ item, onClose, onAddToCart }) {
             </p>
           </div>
           <button
-            onClick={onClose}
+            aria-label="Close" onClick={onClose}
             className="p-1 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-900 transition"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

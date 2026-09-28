@@ -204,7 +204,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col selection:bg-orange-500 selection:text-white">
+    <div className="storefront min-h-screen flex flex-col">
       {/* Storefront Header */}
       <Header
         location={menuData?.location}
@@ -228,7 +228,7 @@ export default function App() {
       {/* Hero Presentation */}
       <HeroBanner location={menuData?.location} />
 
-      {/* Category Navigation Pills */}
+      <section id="menu" className="menu-intro"><div><p className="eyebrow">FROM OUR KITCHEN</p><h2>Find your new favorite.</h2></div><p>Big flavors. Simple pleasures.<br/>Choose your dish. We will take care of the rest.</p></section>
       <CategoryNav
         categories={menuData?.categories || []}
         selectedCategoryId={selectedCategoryId}
@@ -243,7 +243,7 @@ export default function App() {
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
             </svg>
-            <p className="text-neutral-400 text-xs font-semibold">Loading freshly baked menu...</p>
+            <p className="text-neutral-400 text-xs font-semibold">Loading the menu…</p>
           </div>
         ) : (
           <MenuGrid
@@ -254,38 +254,11 @@ export default function App() {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="border-t-2 border-neutral-900 bg-neutral-950 py-10 px-4 sm:px-6 lg:px-8 mt-12 text-xs text-neutral-400">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-serif font-bold text-white text-sm">
-              {menuData?.location?.name || 'Kimchi Korean Grill'}
-            </span>
-            <span>Ã‚Â·</span>
-            <span>Direct Pickup Ordering Platform</span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <button
-              onClick={handleResetDemo}
-              className="text-neutral-500 hover:text-orange-400 transition"
-            >
-              Reset Demo Data
-            </button>
-            <span>Ã‚Â·</span>
-            <button
-              onClick={() => {
-                if (staffToken) setView('STAFF');
-                else setShowStaffLogin(true);
-              }}
-              className="text-neutral-500 hover:text-orange-400 transition"
-            >
-              Kitchen Operations
-            </button>
-          </div>
-        </div>
-      </footer>
-
+      <section id="visit" className="visit-section">
+        <div><p className="eyebrow">GOOD FOOD. CLOSE TO HOME.</p><h2>See you at<br/>the pickup counter.</h2><a className="text-link" href={menuData?.location?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(menuData.location.address)}` : '#visit'} target="_blank" rel="noreferrer">Get directions ↗</a></div>
+        <div className="visit-details"><div><span>FIND US</span><p>{menuData?.location?.address}</p>{menuData?.location?.phone && <a href={`tel:${menuData.location.phone.replace(/[^+\d]/g, '')}`}>{menuData.location.phone}</a>}</div><div><span>YOUR ORDER, YOUR WAY</span><p>Order here. Pick up at our counter.<br/>Pay when you arrive.</p></div></div>
+      </section>
+      <footer className="site-footer"><a className="wordmark" href="#home">kimchi<span>KOREAN GRILL · LONG BEACH</span></a><p>A little Seoul in Long Beach.</p><button onClick={() => { if (staffToken) setView('STAFF'); else setShowStaffLogin(true); }}>Staff access ↗</button></footer>
       {/* Item Customization Modal */}
       {activeItemModal && (
         <ItemModal
@@ -330,10 +303,10 @@ export default function App() {
           <div className="card-thick bg-neutral-950 w-full max-w-md p-6 space-y-4 border-2 border-neutral-800">
             <div className="flex justify-between items-center">
               <h3 className="font-serif text-lg font-bold text-white">Track Your Order</h3>
-              <button onClick={() => setShowTrackModal(false)} className="text-neutral-400 hover:text-white">Ã¢Å“â€¢</button>
+              <button aria-label="Close tracking" onClick={() => setShowTrackModal(false)} className="text-neutral-400 hover:text-white">×</button>
             </div>
             <p className="text-xs text-neutral-400">
-              Enter your Order Reference # (e.g. TK-4821) and Capability Token to view authoritative real-time kitchen status.
+              Enter the order reference and tracking code from your order confirmation.
             </p>
             <div className="space-y-3">
               <div>
@@ -347,10 +320,10 @@ export default function App() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-neutral-300 mb-1">Capability Token</label>
+                <label className="block text-xs font-semibold text-neutral-300 mb-1">Tracking code</label>
                 <input
                   type="text"
-                  placeholder="Paste your capability token"
+                  placeholder="Paste your tracking code"
                   value={inputToken}
                   onChange={e => setInputToken(e.target.value)}
                   className="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3 py-2 text-xs text-white"
