@@ -9,6 +9,7 @@ import CheckoutModal from './components/storefront/CheckoutModal.jsx';
 import OrderStatusView from './components/tracking/OrderStatusView.jsx';
 import StaffLogin from './components/staff/StaffLogin.jsx';
 import StaffDashboard from './components/staff/StaffDashboard.jsx';
+import { getFallbackMenu } from './utils/mockBackend.js';
 
 export default function App() {
   const [view, setView] = useState('STOREFRONT'); // 'STOREFRONT', 'TRACKING', 'STAFF'
@@ -78,7 +79,8 @@ export default function App() {
       const data = await res.json();
       setMenuData(data);
     } catch (err) {
-      console.error('Failed to load menu:', err);
+      console.log('Using embedded Kimchi Grill menu for Vercel demo:', err.message);
+      setMenuData(getFallbackMenu());
     } finally {
       setLoadingMenu(false);
     }
@@ -259,7 +261,7 @@ export default function App() {
             <span className="font-serif font-bold text-white text-sm">
               {menuData?.location?.name || 'Kimchi Korean Grill'}
             </span>
-            <span>Â·</span>
+            <span>Ã‚Â·</span>
             <span>Direct Pickup Ordering Platform</span>
           </div>
 
@@ -270,7 +272,7 @@ export default function App() {
             >
               Reset Demo Data
             </button>
-            <span>Â·</span>
+            <span>Ã‚Â·</span>
             <button
               onClick={() => {
                 if (staffToken) setView('STAFF');
@@ -328,7 +330,7 @@ export default function App() {
           <div className="card-thick bg-neutral-950 w-full max-w-md p-6 space-y-4 border-2 border-neutral-800">
             <div className="flex justify-between items-center">
               <h3 className="font-serif text-lg font-bold text-white">Track Your Order</h3>
-              <button onClick={() => setShowTrackModal(false)} className="text-neutral-400 hover:text-white">âœ•</button>
+              <button onClick={() => setShowTrackModal(false)} className="text-neutral-400 hover:text-white">Ã¢Å“â€¢</button>
             </div>
             <p className="text-xs text-neutral-400">
               Enter your Order Reference # (e.g. TK-4821) and Capability Token to view authoritative real-time kitchen status.
